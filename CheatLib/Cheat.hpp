@@ -33,7 +33,18 @@ public:
 	//=========================================================================
 
 	// Runs the cheat. Only a single instance is allowed at a time.
-	void Run(WCHAR const* cmdLine, WCHAR const* wndName, WCHAR const* clsName);
+	void Run(
+		WCHAR const* cmdLine,
+		WCHAR const* wndName,
+		WCHAR const* clsName,
+		WCHAR const* targetModuleName
+	);
+	void RunConsole(
+		WCHAR const* cmdLine,
+		WCHAR const* wndName,
+		WCHAR const* clsName,
+		WCHAR const* targetModuleName
+	);
 
 protected:
 	//=========================================================================
@@ -48,8 +59,8 @@ protected:
 	// Private interfaces.
 	//=========================================================================
 
-	FTimer Timer;
-	FProcess Process;
-	FWindow Window;
-	FRender Render;
+	FTimer Timer = {};
+	FProcess Process = {};
+	FWindow Window = {};
+	FRender Render = {};
 };

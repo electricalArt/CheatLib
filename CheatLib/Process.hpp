@@ -5,8 +5,21 @@
 class FProcess {
 	friend class FWindow;
 public:
+
 	// Finds the process.
 	b32 Find(WCHAR const* wndName, WCHAR const* wndClass);
+
+	/*F+F+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	  Function: FindTargetModule()
+	
+	  Summary:  Searches for module with given name within the process.
+	
+	  Args:     wszcTargetModuleName - name of desired module.
+	
+	  Returns:  true if success.
+				false if fail.
+	-----------------------------------------------------------------F-F*/
+	b32 FindTargetModule(const WCHAR* wszcTargetModuleName);
 
 	// Returns true if the process is currently open.
 	b32 IsOpen();
@@ -69,8 +82,8 @@ public:
 		return WriteBytes(base, &x, sizeof(x));
 	}
 
-private:
 	HANDLE Process;
 	HWND Window;
 	DWORD ProcessID;
+	HMODULE TargetModule;
 };
